@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>with</title>
+</head>
+
+<body>
+
+  <script>
+
+    /*测试一*/
+    (function () {
+
+      function doTest(ref) {
+        with (ref) {
+          a = 2;
+          b = 3;// b被泄漏到全局作用域上了
+          var c = 4;
+        };
+
+        // c因为是var定义的，而且ref没有属性a，因此在with所在的作用域重新定义了c
+        // 注意和b的情况完全不一样
+        console.log(c);
+      }
+
+      var obj = {
+        a: 1
+      };
+
+      doTest(obj);
+
+      // with可以修改a的值，正常操作
+      console.log(obj.a);
+
+    })();
+
+    // 因为ref有属性a，不会重新定义
+    // console.log(a);
+    // b 因为赋值的时候，直到全局都没有找到，因此在全局中重新定义了，此处可以打印出来
+    console.log(b);
+
+    /*测试二*/
+    (function () {
+      // 严格模式下，with是被禁止的
+      // "use strict";
+      var ref = {};
+      with (ref) {
+        a = 0;
+      }
+    })();
+
+  </script>
+
+</body>
+
+</html>
