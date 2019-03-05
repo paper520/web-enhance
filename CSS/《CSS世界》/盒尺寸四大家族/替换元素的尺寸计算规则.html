@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>替换元素的尺寸计算规则</title>
+  <style>
+    /* 例子一 */
+
+    img.demo1 {
+      width: 200px;
+    }
+
+    /* 例子二 */
+
+    img.demo2 {
+      width: 300px;
+      height: 300px;
+      /* 
+      以图片为例子，替换元素的固有尺寸是无法改变的
+      这里改变的css尺寸是正方形，默认图片填充是fill，充满
+      可以通过下面的方式修改填充方式
+       */
+      object-fit: none;
+      /*可以去浏览器试试别的参数*/
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 例子一 -->
+  <img class='demo1' src="../../../assets/花开物语.jpg" width='300px' />
+
+  <!-- 
+
+    用img作为替换元素的例子：
+
+      1.固有尺寸：比如这里，图片多大，最终显示的就是多大
+
+      2.HTML尺寸：这里就是img标签上设置的width属性300px，会覆盖固有尺寸
+
+      3.css尺寸：也就是css样式代码，这里就是width:200px，会覆盖前面二种尺寸
+
+   -->
+
+  <img />
+
+  <!-- 例子二 -->
+  <img class='demo2' src="../../../assets/花开物语.jpg" />
+
+</body>
+
+</html>
