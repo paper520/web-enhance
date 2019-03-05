@@ -22,11 +22,23 @@
       }
 
       // catch定义的error只在块作用域中存在
-      console.log(error); // Uncaught ReferenceError: error is not defined
+      // console.log(error); // Uncaught ReferenceError: error is not defined
 
       // 变量a还是和以前一样
       console.log(a); // 1
 
+    })();
+
+    /*测试二*/
+    (function () {
+      try { throw 'this is value!'; } catch (e) {
+
+        // 通过这种方式，建立块作用域
+        // 类似es6中的let
+
+        console.log(e); // 'this is value!'
+      }
+      console.log(e); // Uncaught ReferenceError: e is not defined
     })();
 
   </script>
