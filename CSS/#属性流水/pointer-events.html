@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pointer-events</title>
+  <style>
+    div {
+      position: absolute;
+    }
+
+    div.bottom {
+      width: 200px;
+      height: 60px;
+      background-color: red;
+      top: 100px;
+    }
+
+    div.top {
+      height: 200px;
+      width: 60px;
+      left: 100px;
+      background-color: blue;
+    }
+
+    div.top {
+      /* 
+      添加这个属性一下，
+      好像这个div不存在一样，
+      点击直接穿透过去了
+
+      各种操作被无视
+      */
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 设置或检索在何时成为属性事件的target -->
+
+  <div onclick='console.log("下面");' class='bottom'>
+    下面
+  </div>
+
+  <div onclick='console.log("上面");' class='top'>
+    上面
+  </div>
+
+</body>
+
+</html>
