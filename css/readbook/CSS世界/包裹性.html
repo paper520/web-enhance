@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>包裹性</title>
+  <style>
+    /* 例子一 */
+
+    body>div.demo1 {
+      width: 310px;
+      background-color: red;
+      text-align: center;
+    }
+
+    body>div.demo1>div {
+      text-align: left;
+      display: inline-block;
+      font-size: 0;
+    }
+
+    body>div.demo1>div>div {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background-color: gray;
+      text-align: center;
+      font-size: 16px;
+      line-height: 50px;
+      border: 1px solid white;
+    }
+
+    /* 例子二 */
+
+    body>div.demo2 {
+      width: 100px;
+      background-color: rgb(0, 174, 255);
+    }
+
+    body>div.demo2>span {
+      word-break: break-all;
+    }
+
+    /* 例子三 */
+
+    body>div.demo3 {
+      width: 16px;
+    }
+
+    body>div.demo3.f2 {
+      text-align: right;
+    }
+
+    body>div.demo3>span {
+      outline: 3px solid rgb(255, 0, 55);
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 例子一 -->
+  <br />
+  <br />
+  <br /> 内容多的时候
+  <div class='demo1'>
+    <div>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br /> 内容少的时候
+  <div class='demo1'>
+    <div>
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </div>
+  </div>
+
+  <!-- 例子二 -->
+  <br />
+  <br />
+  <br /> 英文换行
+  <div class='demo2'>
+    <span>
+      abcdefghijklmnopqrstuvwxyz
+    </span>
+  </div>
+
+  <!-- 例子三 -->
+  <br />
+  <br />
+  <br />简单图形
+  <div class="demo3 f1">
+    <span>
+      over你over
+    </span>
+  </div>
+  <br />
+  <div class="demo3 f2">
+    <span>
+      我over你
+    </span>
+  </div>
+
+</body>
+
+</html>

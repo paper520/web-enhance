@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>绑定规则 - 默认绑定</title>
+</head>
+
+<body>
+  <script>
+
+    function doIt() {
+
+      // 严格模式下，全局对象不会使用默认绑定，this为undefined
+      // 'use strict';
+
+      // 默认绑定，this绑定到window
+      console.log(this.f);
+    }
+
+    var f = '来自window的变量';
+
+    doIt();
+
+  </script>
+</body>
+
+</html>
