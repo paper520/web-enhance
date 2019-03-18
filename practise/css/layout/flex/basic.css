@@ -1,0 +1,10 @@
+div{
+  background-color: rgb(252, 240, 133);
+  width: 700px;
+}
+div>span{
+  background-color: rgb(4, 139, 230);
+  color:white;
+  line-height: 3em;
+  margin: 10px;
+}

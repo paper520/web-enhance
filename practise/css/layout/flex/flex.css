@@ -1,0 +1,40 @@
+div {
+    /* 启用弹性布局 */
+    display: flex;
+    /* 或display: inline-flex; */
+    /* 
+    ===================
+    容器的属性
+    */
+    /* 主轴的方向（即项目的排列方向） */
+    flex-direction: row-reverse;
+    /* 如果一条轴线排不下，如何换行 */
+    flex-wrap: wrap-reverse;
+    /* 项目在主轴上的对齐方式 */
+    justify-content: center;
+    /* 项目在交叉轴上如何对齐 */
+    align-items: flex-end;
+}
+
+/*
+==================
+项目的属性
+*/
+
+div>span:first-child {
+    /* 定义项目的排列顺序，数值越小，排列越靠前，默认为0 */
+    order: 2;
+    background-color: rgb(228, 15, 15);
+}
+
+/* 定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大 */
+
+div>span:nth-child(2) {
+    flex-grow: 1;
+    background-color: gray;
+}
+
+div>span:nth-child(3) {
+    flex-grow: 2;
+    background-color: gray;
+}
