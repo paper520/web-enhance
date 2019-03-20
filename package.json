@@ -1,0 +1,23 @@
+{
+  "name": "web-enhance",
+  "version": "0.1.0",
+  "description": "主要是为了更深入或更系统的学习前端基础技术（不包括对框架等使用的学习）而建立的项目，以知识点划分，迭代加强理解，同时，也可以相互交流理解心得，共同进步。",
+  "scripts": {
+    "start": "npm install && npm run server",
+    "server": "node_modules/.bin/grunt server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yelloxing/web-enhance.git"
+  },
+  "author": "心叶",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yelloxing/web-enhance/issues"
+  },
+  "homepage": "https://github.com/yelloxing/web-enhance#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-connect": "^2.0.0"
+  }
+}
