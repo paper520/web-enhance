@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GUI渲染线程和JS引擎线程执行顺序</title>
+
+</head>
+
+<body>
+
+  <script>
+
+    document.getElementsByTagName('body')[0].innerHTML =
+      `<div style='color:red;'>
+        颜色红色
+      </div>`;
+
+    var div;
+
+    while (true) {
+
+      div = document.getElementsByTagName('div')[0];
+
+      // GUI渲染线程与JS引擎线程是互斥的，
+      // 当JS引擎执行时GUI线程会被挂起（相当于被冻结了），
+      // GUI更新会被保存在一个队列中等到JS引擎空闲时立即被执行
+
+      console.log(
+        div.innerHTML, // 颜色红色
+        div.style.color // 'red'
+      );
+
+      // 因此，js代码执行没有结束，页面什么也看不见，可是dom是可以获取到值的
+    }
+
+  </script>
+</body>
+
+</html>
