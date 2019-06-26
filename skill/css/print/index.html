@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>打印相关</title>
+  <link rel="stylesheet" href="../../../asset/easy.css">
+
+  <style>
+    ul {
+      /* 多页打印的时候需要注意，这里的设置只对第一页有用 */
+      /* margin-top: -10pt; */
+    }
+
+    ul>li {
+
+      /* 分页 */
+      page-break-after: always;
+
+      /* 负的和正的不一样 */
+      /* margin-top: -10pt; */
+      margin-top: 10pt;
+
+      /* 想打印背景色，需要打印的时候设置【打印背景色】 */
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>第一页</li>
+    <li>第二页</li>
+    <li>第三页</li>
+  </ul>
+
+  <script>
+    window.print();
+  </script>
+</body>
+
+</html>
