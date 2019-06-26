@@ -10,8 +10,26 @@
 
   <style>
     ul {
-      /* 多页打印的时候需要注意，这里的设置只对第一页有用 */
+      /* [错误示范]多页打印的时候需要注意，这里的设置只对第一页有用 */
       /* margin-top: -10pt; */
+    }
+
+    @page {
+
+      /* 分页以后，每页的对外控制可以在这里设置 */
+      margin-top: 2cm;
+
+
+      /* 
+      ===================
+      纸张大小设置 
+      */
+      /* 直接设置纸张大小 */
+      /* size: 5.5in 8.5in; */
+      /* 控制纸张大小 */
+      /* size: A5; */
+      /* portrait： 纵向打印地,  landscape: 横向 */
+      size: A4 landscape;
     }
 
     ul>li {
@@ -19,19 +37,26 @@
       /* 分页 */
       page-break-after: always;
 
-      /* 负的和正的不一样 */
-      /* margin-top: -10pt; */
-      margin-top: 10pt;
-
       /* 想打印背景色，需要打印的时候设置【打印背景色】 */
       background-color: blue;
+
+    }
+
+    #urlPrint::after {
+      /* 可以这样对超链接进行扩展 */
+      content: " <" attr(href) "> ";
     }
   </style>
 </head>
 
 <body>
   <ul>
-    <li>第一页</li>
+    <li>
+      第一页
+      <a id='urlPrint' href="https://github.com/yelloxing/web-enhance">
+        项目地址
+      </a>
+    </li>
     <li>第二页</li>
     <li>第三页</li>
   </ul>
