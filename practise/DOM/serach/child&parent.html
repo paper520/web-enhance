@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>孩子和父亲结点查找</title>
+</head>
+
+<body>
+  <div>
+    <h2>
+      孩子和父亲结点查找
+    </h2>
+    <ul id='root'>
+      测试内容
+      <li>1</li>
+      <li>2</li>
+      <li name='这是一个name'>3</li>
+      <li>
+        <span>孙子</span>
+        4
+      </li>
+    </ul>
+  </div>
+  <script>
+
+    var rootNode = document.getElementById('root');
+
+    // 返回当前元素子节点的所有元素节点、文本节点
+    console.log(rootNode.childNodes);
+
+    // 返回当前元素子节点的所有元素节点
+    console.log(rootNode.children);
+
+    // 返回父元素
+    console.log(rootNode.parentElement);/*不推荐用这个*/
+
+    // 返回父结点
+    console.log(rootNode.parentNode);
+
+    // 前者返回document，后者返回null
+    console.error(document.body.parentNode.parentNode);
+    console.error(document.body.parentElement.parentElement);
+
+  </script>
+</body>
+
+</html>

@@ -7,6 +7,22 @@
 ### 邮箱:yelloxing@gmail.com
 ****
 
+目录说明
+-------
+- practise 常规API用例
+  - css
+  - DOM
+  - es
+    - es6+
+  - html
+- skill 积累的一些经验
+  - css
+- Source code analysis 源码分析
+  - Vue2
+- understand 一些理解和反思
+  - Browser
+  - es
+
 ### 免责声明
 
 *   项目中部分数据（如图片等）来自互联网，如果侵犯到对应权益者请联系我们，方便我们及时删除！
