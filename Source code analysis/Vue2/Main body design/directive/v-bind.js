@@ -1,0 +1,3 @@
+TestVue.directive('bind', {
+
+});

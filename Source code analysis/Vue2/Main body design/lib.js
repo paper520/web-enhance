@@ -48,6 +48,33 @@ TestVue.prototype.observe = function () {
 // 简单点说，就是分析结点中的内容，有没有定义的指令等
 // 根据结点内容追加需要管理的东西
 TestVue.prototype.compile = function (el) {
+  var nodes = el.childNodes, i, node;
+  for (i = 0; i < nodes.length; i++) {
+    node = nodes[i];
+
+    // 如果不是文本结点，继续编译
+    if (node.nodeType !== 3) {
+      this.compile(node);
+    }
+
+    // 开始正式解析一个结点（分为文本结点和非文本结点）
+    if (node.nodeType === 3) {
+      // 如果是文本
+
+
+
+    } else {
+      // 如果不是文本
+
+
+
+    }
+
+  }
+};
+
+// 注册指令
+TestVue.directive = function (directieName, options) {
 
 };
 
