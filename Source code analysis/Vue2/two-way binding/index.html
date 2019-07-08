@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./lib.js"></script>
+  <title>双向绑定</title>
+</head>
+
+<body>
+  <div id='app'>
+    输入：
+    <input type="text" v-model='test'>
+    <hr /> 显示输入一：{{test}}
+    <hr /> 显示输入二：
+    <span v-bind='test'></span>
+  </div>
+
+  <script>
+
+    var vm = new TestVue({
+      el: document.getElementById('app'),
+      data: {
+        "test": "-default-"
+      }
+    });
+
+  </script>
+</body>
+
+</html>
