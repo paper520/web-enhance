@@ -21,11 +21,19 @@ var TestVue = function (options) {
 
 };
 
+/**
+ * 容器
+ * ---------------
+ * 记录指令，过滤器，组件等
+ */
+TestVue.__directive__ = {};
+TestVue.__synchronizer__ = {};
+
 // 数据拦截
 // 对象options的data中定义的key的编辑会在这里拦截
 // 通知专门处理变化情况的（同步视图和数据）
 TestVue.prototype.observe = function () {
-  var key;
+  var key, _this = this;
   for (key in this.$data) {
     var value = this.$data[key];
     Object.defineProperty(this.$data, key, {
@@ -35,6 +43,17 @@ TestVue.prototype.observe = function () {
       set(newValue) {
         if (newValue != value) {
           value = newValue;
+          var item = TestVue.__synchronizer__[key];
+          if (item && item.constructor === Array) {
+            var i;
+            for (i = 0; i < item.length; i++) {
+              item[i].update(item[i].$el, {
+                "value": newValue,
+                "key": key,
+                "scope": _this
+              });
+            }
+          }
         } else {
           // 如果数据一样，可以无视
           // todo
@@ -61,12 +80,33 @@ TestVue.prototype.compile = function (el) {
     if (node.nodeType === 3) {
       // 如果是文本
 
-
-
     } else {
       // 如果不是文本
 
+      // 解析指令
+      var j, attributes = node.attributes, directive;
+      for (j = 0; j < attributes.length; j++) {
+        directive = TestVue.__directive__[attributes[j].name];
+        if (directive) {
 
+          var binding = {
+            "value": this.$data[node.getAttribute(attributes[j].name)],
+            "key": node.getAttribute(attributes[j].name),
+            "scope": this
+          };
+
+          if (typeof directive.bind === 'function')
+            directive.bind(node, binding);
+
+          if (typeof directive.update === 'function') {
+            TestVue.__synchronizer__[node.getAttribute(attributes[j].name)] = TestVue.__synchronizer__[node.getAttribute(attributes[j].name)] || [];
+            TestVue.__synchronizer__[node.getAttribute(attributes[j].name)].push({
+              "$el": node,
+              "update": directive.update
+            });
+          }
+        }
+      }
 
     }
 
@@ -75,15 +115,5 @@ TestVue.prototype.compile = function (el) {
 
 // 注册指令
 TestVue.directive = function (directieName, options) {
-
-};
-
-// 同步者
-// 用以同步视图和数据
-var Synchronizer = function (options) {
-
-};
-
-Synchronizer.prototype.update = function () {
-
+  TestVue.__directive__["v-" + directieName] = options;
 };

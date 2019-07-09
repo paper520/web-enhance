@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="./lib.js"></script>
+  <script src="./tool.js"></script>
+  <script src="./TestVue.js"></script>
   <script src="./directive/v-bind.js"></script>
   <script src="./directive/v-model.js"></script>
   <title>主体设计</title>
@@ -15,8 +16,10 @@
   <div id='app'>
     输入：
     <input type="text" v-model='test'>
-    <hr /> 显示输入一：{{test}}
-    <hr /> 显示输入二：
+    <hr /> 输出：
+    <div>
+      <span v-bind='test'></span>
+    </div>
     <span v-bind='test'></span>
   </div>
 
