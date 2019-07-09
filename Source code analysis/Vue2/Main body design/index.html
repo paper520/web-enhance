@@ -14,13 +14,25 @@
 
 <body>
   <div id='app'>
-    输入：
-    <input type="text" v-model='test'>
-    <hr /> 输出：
-    <div>
-      <span v-bind='test'></span>
-    </div>
-    <span v-bind='test'></span>
+    <h1>
+      输入
+    </h1>
+    <p>
+      姓名：
+      <input type="text" v-model='username'> 年龄：
+      <input type="text" v-model='age'>
+    </p>
+
+    <h1>
+      输出
+    </h1>
+    <p>
+      我的名字叫
+      <em v-bind='username' style='color:red'></em>，今年
+      <i v-bind="age" style='color:blue'></i>
+      了。
+    </p>
+
   </div>
 
   <script>
@@ -28,7 +40,8 @@
     var vm = new TestVue({
       el: document.getElementById('app'),
       data: {
-        "test": "-default-"
+        "username": "布丁",
+        "age": "12"
       }
     });
 

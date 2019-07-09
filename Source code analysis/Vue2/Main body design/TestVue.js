@@ -33,33 +33,36 @@ TestVue.__synchronizer__ = {};
 // 对象options的data中定义的key的编辑会在这里拦截
 // 通知专门处理变化情况的（同步视图和数据）
 TestVue.prototype.observe = function () {
-  var key, _this = this;
-  for (key in this.$data) {
-    var value = this.$data[key];
-    Object.defineProperty(this.$data, key, {
-      get() {
-        return value;
-      },
-      set(newValue) {
-        if (newValue != value) {
-          value = newValue;
-          var item = TestVue.__synchronizer__[key];
-          if (item && item.constructor === Array) {
-            var i;
-            for (i = 0; i < item.length; i++) {
-              item[i].update(item[i].$el, {
-                "value": newValue,
-                "key": key,
-                "scope": _this
-              });
+  var _key, _this = this;
+  for (_key in _this.$data) {
+    // 形成闭包
+    (function (key) {
+      var value = _this.$data[key];
+      Object.defineProperty(_this.$data, key, {
+        get() {
+          return value;
+        },
+        set(newValue) {
+          if (newValue != value) {
+            value = newValue;
+            var item = TestVue.__synchronizer__[key];
+            if (item && item.constructor === Array) {
+              var i;
+              for (i = 0; i < item.length; i++) {
+                item[i].update(item[i].$el, {
+                  "value": newValue,
+                  "key": key,
+                  "scope": _this
+                });
+              }
             }
+          } else {
+            // 如果数据一样，可以无视
+            // todo
           }
-        } else {
-          // 如果数据一样，可以无视
-          // todo
         }
-      }
-    });
+      });
+    })(_key);
   }
 };
 
