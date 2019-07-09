@@ -13,9 +13,9 @@
   - css
   - DOM
   - es
-    - es6+
+   - es6+
   - html
-- skill 积累的一些经验
+- skill 积累的一些经验
   - css
 - Source code analysis 源码分析
   - Vue2
